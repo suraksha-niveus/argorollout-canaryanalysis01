@@ -9,7 +9,7 @@ spec:
     provider:
       web:
         # paceholders are resolved when an AnalysisRun is created
-        url: "http://34.93.157.58:5000/"
+        # url: "http://34.93.157.58:5000/"
         query: FROM Transaction SELECT percentage(count(*), WHERE httpResponseCode != 500) as successRate where appName = "http://34.93.157.58:5000/"
 
    
