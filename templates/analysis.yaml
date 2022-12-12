@@ -1,15 +1,15 @@
-# kind: AnalysisTemplate
-# apiVersion: argoproj.io/v1alpha1
-# metadata:
-#   name: canarycheck
-# spec:
-#   metrics:
-#   - name: canarycheck
-#     successCondition: result.successRate >= 0.95
-#     provider:
-#       newRelic:
-#         profile: argo-rollouts-newrelic-nonprod-credentials
-#         query: FROM Transaction SELECT percentage(count(*), WHERE httpResponseCode = 200) as successRate where appName = "34.100.160.206:5000/"
+kind: AnalysisTemplate
+apiVersion: argoproj.io/v1alpha1
+metadata:
+  name: canarycheck
+spec:
+  metrics:
+  - name: canarycheck
+    successCondition: result.successRate >= 0.95
+    provider:
+      newRelic:
+        profile: argo-rollouts-newrelic-nonprod-credentials
+        query: FROM Transaction SELECT percentage(count(*), WHERE httpResponseCode = 200) as successRate where appName = "35.244.23.154:5000/"
 ###########################################
 # kind: AnalysisTemplate
 # apiVersion: argoproj.io/v1alpha1
@@ -28,22 +28,22 @@
 #         jsonPath: "nok"
 
 
-kind: AnalysisTemplate
-apiVersion: argoproj.io/v1alpha1
-metadata:
-  name: canarycheck
-spec:
-  metrics:
-  - name: test
-    provider:
-      job:
-        spec:
-          backoffLimit: 1
-          template:
-            spec:
-              containers:
-              - name: busybox
-                image: busybox
-                #args: [test]  #--> for making analysis fail, uncomment
-              restartPolicy: Never
+# kind: AnalysisTemplate
+# apiVersion: argoproj.io/v1alpha1
+# metadata:
+#   name: canarycheck
+# spec:
+#   metrics:
+#   - name: test
+#     provider:
+#       job:
+#         spec:
+#           backoffLimit: 1
+#           template:
+#             spec:
+#               containers:
+#               - name: busybox
+#                 image: busybox
+#                 #args: [test]  #--> for making analysis fail, uncomment
+#               restartPolicy: Never
 
