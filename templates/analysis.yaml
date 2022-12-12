@@ -48,7 +48,7 @@ spec:
       web:
         # paceholders are resolved when an AnalysisRun is created
         url: "http://34.93.157.58:5000/"
-        jsonPath: "{$.status}"
+        jsonPath: "400"
 
 
 # kind: AnalysisTemplate
