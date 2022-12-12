@@ -15,9 +15,9 @@ spec:
       # - args:
       #   - name: host
       #     value: rollouts-demo
-          # args:
-          # - name: host
-          #   value: argorollout-canaryanalysis
+          args:
+          - name: host
+            value: argorollout-canaryanalysis
       - setWeight: 40
       - pause: {duration: 10}
       - setWeight: 60
@@ -36,7 +36,7 @@ spec:
       containers:
       - name: argorollout-canaryanalysis
         # image: argoproj/rollouts-demo:black
-        image: particule/simplecolorapi:2.0
+        image: particule/simplecolorapi:1.0
         ports:
         - name: http
           containerPort: 5000
