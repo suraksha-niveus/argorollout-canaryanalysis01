@@ -18,7 +18,7 @@ metadata:
 spec:
   metrics:
   - name: canarycheck
-    successCondition: result.successRate >= 0.95
+    # successCondition: result.successRate >= 0.95
     # failureLimit: 1
     # interval: 1
     # successCondition: result == "200"
