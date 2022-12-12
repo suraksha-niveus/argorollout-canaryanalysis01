@@ -41,14 +41,14 @@ metadata:
 spec:
   metrics:
   - name: canarycheck
-    failureLimit: 1
-    interval: 1
-    successCondition: result == "200"
+    # failureLimit: 1
+    # interval: 1
+    # successCondition: result == "200"
     provider:
       web:
         # paceholders are resolved when an AnalysisRun is created
         url: "http://34.93.157.58:5000/"
-        jsonPath: "400"
+        jsonPath: "nok"
 
 
 # kind: AnalysisTemplate
