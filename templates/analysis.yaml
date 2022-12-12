@@ -1,36 +1,36 @@
-apiVersion: argoproj.io/v1alpha1
+# apiVersion: argoproj.io/v1alpha1
+# kind: AnalysisTemplate
+# metadata:
+#   name: canarycheck
+# spec:
+#   args:
+#   - name: host
+#   metrics:
+#   - name: canarycheck
+#     failureLimit: 1
+#     interval: 1
+#     successCondition: result == "ok"
+#     provider:
+#       web:
+#         # paceholders are resolved when an AnalysisRun is created
+#         url: "http://34.93.157.58:5000/"
+#         jsonPath: "{$.status}"
 kind: AnalysisTemplate
+apiVersion: argoproj.io/v1alpha1
 metadata:
   name: canarycheck
 spec:
-  args:
-  - name: host
   metrics:
-  - name: canarycheck
-    failureLimit: 1
-    interval: 1
-    successCondition: result == "ok"
+  - name: test
     provider:
-      web:
-        # paceholders are resolved when an AnalysisRun is created
-        url: "http://34.93.157.58:5000/"
-        jsonPath: "{$.status}"
-# kind: AnalysisTemplate
-# apiVersion: argoproj.io/v1alpha1
-# metadata:
-#   name: canary-check
-# spec:
-#   metrics:
-#   - name: test
-#     provider:
-#       job:
-#         spec:
-#           backoffLimit: 1
-#           template:
-#             spec:
-#               containers:
-#               - name: busybox
-#                 image: busybox
-#                 #args: [test]  #--> for making analysis fail, uncomment
-#               restartPolicy: Never
+      job:
+        spec:
+          backoffLimit: 1
+          template:
+            spec:
+              containers:
+              - name: busybox
+                image: busybox
+                #args: [test]  #--> for making analysis fail, uncomment
+              restartPolicy: Never
 
