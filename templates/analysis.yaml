@@ -3,8 +3,8 @@ kind: AnalysisTemplate
 metadata:
   name: canary-check
 spec:
-  args:
-  - name: host
+  # args:
+  # - name: host
   metrics:
   - name: canary-check
     failureLimit: 1
@@ -13,8 +13,8 @@ spec:
     provider:
       web:
         # paceholders are resolved when an AnalysisRun is created
-        url: "http://{{args.host}}/"
-        # url: "http://34.100.195.123"
+        # url: "http://{{args.host}}/"
+        url: "http://34.93.157.58:5000/"
         jsonPath: "{$.status}"
 # kind: AnalysisTemplate
 # apiVersion: argoproj.io/v1alpha1

@@ -15,9 +15,9 @@ spec:
       # - args:
       #   - name: host
       #     value: rollouts-demo
-          args:
-          - name: host
-            value: argorollout-canaryanalysis
+          # args:
+          # - name: host
+          #   value: argorollout-canaryanalysis
       - setWeight: 40
       - pause: {duration: 10}
       - setWeight: 60
