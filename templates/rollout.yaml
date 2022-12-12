@@ -11,7 +11,7 @@ spec:
       - pause: {duration: 50}
       - analysis:
           templates:
-          - templateName: canary-check
+          - templateName: canarycheck
       # - args:
       #   - name: host
       #     value: rollouts-demo
