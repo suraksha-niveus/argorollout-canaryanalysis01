@@ -13,7 +13,6 @@ spec:
     provider:
       web:
         # paceholders are resolved when an AnalysisRun is created
-        # url: "http://{{args.host}}/"
         url: "http://34.93.157.58:5000/"
         jsonPath: "{$.status}"
 # kind: AnalysisTemplate
