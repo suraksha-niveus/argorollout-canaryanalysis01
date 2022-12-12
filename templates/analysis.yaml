@@ -1,22 +1,43 @@
-apiVersion: argoproj.io/v1alpha1
 kind: AnalysisTemplate
+apiVersion: argoproj.io/v1alpha1
 metadata:
   name: canary-check
 spec:
-  args:
-  - name: host
   metrics:
-  - name: canary-check
-    failureLimit: 1
-    interval: 1
-    successCondition: result == "ok"
+  - name: test
     provider:
-      web:
-        # paceholders are resolved when an AnalysisRun is created
-        url: "http://{{args.host}}/"
-        # url: "http://34.100.195.123"
-        jsonPath: "{$.status}"
+      job:
+        spec:
+          backoffLimit: 1
+          template:
+            spec:
+              containers:
+              - name: busybox
+                image: busybox
+                #args: [test]  #--> for making analysis fail, uncomment
+              restartPolicy: Never
 
+###################################
+
+# apiVersion: argoproj.io/v1alpha1
+# kind: AnalysisTemplate
+# metadata:
+#   name: canary-check
+# spec:
+#   args:
+#   - name: host
+#   metrics:
+#   - name: canary-check
+#     failureLimit: 1
+#     interval: 1
+#     successCondition: result == "ok"
+#     provider:
+#       web:
+#         # paceholders are resolved when an AnalysisRun is created
+#         url: "http://{{args.host}}/"
+#         # url: "http://34.100.195.123"
+#         jsonPath: "{$.status}"
+#########################################################
  # This file contains AnalysisTemplates referenced by Rollouts and Experiments in the examples.
 # # Please apply this file first, before running any of the examples.
 
