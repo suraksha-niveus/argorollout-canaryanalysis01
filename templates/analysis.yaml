@@ -7,7 +7,7 @@ spec:
   - name: canarycheck
     failureLimit: 1
     interval: 1
-    successCondition: result == "ok"
+    successCondition: result >= "0.95"
     # successCondition: result.successRate >= 0.95
     provider:
       web:
