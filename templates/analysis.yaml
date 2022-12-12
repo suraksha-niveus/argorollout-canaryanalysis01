@@ -5,9 +5,9 @@ metadata:
 spec:
   metrics:
   - name: test
-    failureLimit: 1
-    interval: 1
-    successCondition: result == "ok"
+    # failureLimit: 1
+    # interval: 1
+    # successCondition: result == "ok"
     provider:
       web:
         # paceholders are resolved when an AnalysisRun is created
