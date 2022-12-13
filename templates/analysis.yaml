@@ -1,22 +1,22 @@
-kind: AnalysisTemplate
-apiVersion: argoproj.io/v1alpha1
-metadata:
-  name: canarycheck
-spec:
-  metrics:
-  - name: canarycheck
-    # successCondition: result.successRate >= 0.95
-    # successCondition: result[0] >= 0.95
-    # failureLimit: 1
-    # interval: 1
-    # successCondition: result == "200"
-    provider:
-      web:
-        # paceholders are resolved when an AnalysisRun is created
-        # url : FROM Transaction SELECT percentage(count(*), WHERE httpResponseCode != 500) as successRate where appName = "34.100.195.123:5000/"
-        # address: "http://34.93.6.57:5000"
-        url: FROM Transaction SELECT percentage(count(*), WHERE httpResponseCode != 200) as successRate where appName = "34.100.195.123:5000/"
-        # jsonPath: "nok"
+# kind: AnalysisTemplate
+# apiVersion: argoproj.io/v1alpha1
+# metadata:
+#   name: canarycheck
+# spec:
+#   metrics:
+#   - name: canarycheck
+#     # successCondition: result.successRate >= 0.95
+#     # successCondition: result[0] >= 0.95
+#     # failureLimit: 1
+#     # interval: 1
+#     # successCondition: result == "200"
+#     provider:
+#       web:
+#         # paceholders are resolved when an AnalysisRun is created
+#         # url : FROM Transaction SELECT percentage(count(*), WHERE httpResponseCode != 500) as successRate where appName = "34.100.195.123:5000/"
+#         # address: "http://34.93.6.57:5000"
+#         url: FROM Transaction SELECT percentage(count(*), WHERE httpResponseCode != 200) as successRate where appName = "34.100.195.123:5000/"
+#         # jsonPath: "nok"
 
 
 # kind: AnalysisTemplate
@@ -51,22 +51,22 @@ spec:
 #         # jsonPath: "nok"
 
 
-# kind: AnalysisTemplate
-# apiVersion: argoproj.io/v1alpha1
-# metadata:
-#   name: canarycheck
-# spec:
-#   metrics:
-#   - name: test
-#     provider:
-#       job:
-#         spec:
-#           backoffLimit: 1
-#           template:
-#             spec:
-#               containers:
-#               - name: busybox
-#                 image: busybox
-#                 #args: [test]  #--> for making analysis fail, uncomment
-#               restartPolicy: Never
+kind: AnalysisTemplate
+apiVersion: argoproj.io/v1alpha1
+metadata:
+  name: canarycheck
+spec:
+  metrics:
+  - name: test
+    provider:
+      job:
+        spec:
+          backoffLimit: 1
+          template:
+            spec:
+              containers:
+              - name: busybox
+                image: busybox
+                #args: [test]  #--> for making analysis fail, uncomment
+              restartPolicy: Never
 
