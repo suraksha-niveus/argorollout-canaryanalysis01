@@ -8,7 +8,7 @@ spec:
     canary:
       steps:
       - setWeight: 20
-      - pause: {duration: 50}
+      - pause: {duration: 5}
       - analysis:
           templates:
           - templateName: canarycheck
@@ -19,11 +19,11 @@ spec:
           # - name: host
           #   value: argorollout-canaryanalysis
       - setWeight: 40
-      - pause: {duration: 10}
+      - pause: {duration: 5}
       - setWeight: 60
-      - pause: {duration: 10}
+      - pause: {duration: 5}
       - setWeight: 80
-      - pause: {duration: 10}
+      - pause: {duration: 5}
   revisionHistoryLimit: 2
   selector:
     matchLabels:
@@ -36,7 +36,7 @@ spec:
       containers:
       - name: argorollout-canaryanalysis
         # image: argoproj/rollouts-demo:black
-        image: particule/simplecolorapi:3.0
+        image: particule/simplecolorapi:1.0
         ports:
         - name: http
           containerPort: 5000
