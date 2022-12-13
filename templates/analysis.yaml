@@ -5,7 +5,7 @@ metadata:
 spec:
   metrics:
   - name: canarycheck
-    successCondition: result.successRate >= 0.95
+    # successCondition: result.successRate >= 0.95
     provider:
       newRelic:
         profile: argo-rollouts-newrelic-nonprod-credentials
