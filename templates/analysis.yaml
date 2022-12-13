@@ -11,41 +11,41 @@
 #         profile: argo-rollouts-newrelic-nonprod-credentials
 #         query: FROM Transaction SELECT percentage(count(*), WHERE httpResponseCode = 200) as successRate where appName = "35.244.23.154:5000/"
 ###########################################
-kind: AnalysisTemplate
-apiVersion: argoproj.io/v1alpha1
-metadata:
-  name: canarycheck
-spec:
-  metrics:
-  - name: canarycheck
-    # successCondition: result.successRate >= 0.95
-    # failureLimit: 1
-    # interval: 1
-    # successCondition: result == "200"
-    provider:
-      web:
-        # paceholders are resolved when an AnalysisRun is created
-        url : FROM Transaction SELECT percentage(count(*), WHERE httpResponseCode = 200) as successRate where appName = "http://34.100.216.226:5000/"
-        # url: "http://34.93.157.58:5000/"
-        # jsonPath: "nok"
-
-
 # kind: AnalysisTemplate
 # apiVersion: argoproj.io/v1alpha1
 # metadata:
 #   name: canarycheck
 # spec:
 #   metrics:
-#   - name: test
+#   - name: canarycheck
+#     # successCondition: result.successRate >= 0.95
+#     # failureLimit: 1
+#     # interval: 1
+#     # successCondition: result == "200"
 #     provider:
-#       job:
-#         spec:
-#           backoffLimit: 1
-#           template:
-#             spec:
-#               containers:
-#               - name: busybox
-#                 image: busybox
-#                 #args: [test]  #--> for making analysis fail, uncomment
-#               restartPolicy: Never
+#       web:
+#         # paceholders are resolved when an AnalysisRun is created
+#         url : FROM Transaction SELECT percentage(count(*), WHERE httpResponseCode = 200) as successRate where appName = "http://34.100.216.226:5000/"
+#         # url: "http://34.93.157.58:5000/"
+#         # jsonPath: "nok"
+
+
+kind: AnalysisTemplate
+apiVersion: argoproj.io/v1alpha1
+metadata:
+  name: canarycheck
+spec:
+  metrics:
+  - name: test
+    provider:
+      job:
+        spec:
+          backoffLimit: 1
+          template:
+            spec:
+              containers:
+              - name: busybox
+                image: busybox
+                #args: [test]  #--> for making analysis fail, uncomment
+              restartPolicy: Never
 
