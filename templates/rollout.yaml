@@ -36,7 +36,7 @@ spec:
       containers:
       - name: argorollout-canaryanalysis
         # image: argoproj/rollouts-demo:black
-        image: particule/simplecolorapi:2.0
+        image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
         ports:
         - name: http
           containerPort: 5000
